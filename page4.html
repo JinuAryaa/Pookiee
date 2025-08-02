@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweetu ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #8e0038, #ff4d6d);
+      background-image: url('assets/heartsbg.gif'), linear-gradient(135deg, #8e0038, #ff4d6d);
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 40px 25px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      animation: fadeIn 1.2s ease;
+      z-index: 1;
+    }
+
+    .romantic-text {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .couple-img {
+      width: 200px;
+      border-radius: 20px;
+      animation: dreamyFloat 3s infinite ease-in-out;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes dreamyFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-10px) scale(1.05);
+      }
+    }
+
+    /* Floating Hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 24px;
+      animation: floatHeart 10s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-50vh) scale(1.3);
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      .romantic-text {
+        font-size: 18px;
+      }
+
+      .couple-img {
+        width: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .romantic-text {
+        font-size: 16px;
+      }
+
+      .couple-img {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+<iframe src="audio-player.html" allow="autoplay" id="audio-frame" style="display:none;"></iframe>
+
+  <div class="card">
+    <div class="romantic-text">
+      Every heartbeat of mine whispers your name 💖<br />
+      You're the magic in my ordinary days, the smile I never knew I needed 😍<br />
+      With you, everything feels like a dream I never want to wake up from ✨
+    </div>
+    <img src="assets/love  u.png" alt="Romantic Couple" class="couple-img">
+  </div>
+
+  <!-- Floating hearts script -->
+  <script>
+    const emojis = ["💖", "💘", "💕", "💗", "💓", "❤️"];
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = 16 + Math.random() * 24 + "px";
+      heart.style.animationDuration = 8 + Math.random() * 5 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 14000);
+    }, 600);
+  </script>
+
+</body>
+</html>

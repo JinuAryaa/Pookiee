@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nice Try 😏</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe6eb;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      padding: 20% 10px 10px;
+      color: #d6336c;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, p {
+      opacity: 0;
+    }
+
+    #message {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #a80038;
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('assets/heartss.gif');
+      background-size: cover;
+      opacity: 0.4;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      padding: 10px 25px;
+      border: none;
+      background-color: #d6336c;
+      color: white;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff4d6d;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+<iframe src="audio-player.html" allow="autoplay" id="audio-frame" style="display:none;"></iframe>
+
+  <h1 id="title">A ‘no’ isn’t an option, meri jaan 💌</h1>
+  <p id="message"></p>
+  <button class="back-btn" onclick="location.href='index.html'">← Back</button>
+
+  <!-- Floating Hearts -->
+  <script>
+    // Typing effect
+    const messageText = "It’s just a plot twist in our love story.\nYou’re mine not just for this life, but for the next 7 generations! 🥰";
+    const messageEl = document.getElementById("message");
+    const titleEl = document.getElementById("title");
+
+    let i = 0;
+    titleEl.style.opacity = 1;
+
+    function typeMessage() {
+      if (i < messageText.length) {
+        messageEl.innerHTML += messageText.charAt(i) === '\n' ? '<br>' : messageText.charAt(i);
+        messageEl.style.opacity = 1;
+        i++;
+        setTimeout(typeMessage, 50);
+      }
+    }
+    setTimeout(typeMessage, 1000);
+
+    // Floating hearts
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
